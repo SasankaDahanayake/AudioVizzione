@@ -1,0 +1,64 @@
+Creating ‘device’ Table Query
+
+	CREATE TABLE device(
+    		deviceCatalogId INT(10) UNSIGNED PRIMARY KEY,
+    		deviceCatalogName VARCHAR(250) NOT NULL,
+    		deviceDescrip VARCHAR(250) NOT NULL,
+    		availabilityStatus VARCHAR(250) NOT NULL
+	)
+
+Creating ‘visualDevice’ Table Query
+
+	CREATE TABLE visualDevice(
+    		deviceCatalogId INT(10) UNSIGNED PRIMARY KEY,
+    		frFlag VARCHAR(250) NOT NULL,
+    		frBrand VARCHAR(250) NOT NULL,
+    		frModel VARCHAR(250) NOT NULL,
+    		lensFlag VARCHAR(250) NOT NULL,
+    		lensSerialNb VARCHAR(250) NOT NULL,
+    		lensVisionType VARCHAR(250) NOT NULL,
+    		lensTint VARCHAR(250) NOT NULL,
+    		lensThinnessLevel VARCHAR(250) NOT NULL,
+    		UNIQUE(lensSerialNb),
+    		FOREIGN KEY (deviceCatalogId) REFERENCES device(deviceCatalogId)
+	)
+
+Creating ‘hearingDevice’ Table Query
+
+	CREATE TABLE hearingDevice(
+    		deviceCatalogId INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    		hdMake VARCHAR(250) NOT NULL,
+    		hdModel VARCHAR(250) NOT NULL,
+    		FOREIGN KEY (deviceCatalogId) REFERENCES device(deviceCatalogId)
+	)
+
+
+Entering the values of “Emporio Armani Ultra-Light frame” for glasses
+
+	INSERT INTO device(deviceCatalogId, deviceDescrip, availabilityStatus)
+	VALUES(001, "Brand new grey and blue ultra-light frame, latest trend in 2019.", "In stock.");
+
+	INSERT INTO visualDevice(deviceCatalogId, frBrand, frModel)
+	VALUES(001, "Emporio Armani.", "Empo324.");
+
+
+Entering the values of “Optimo Single Vision Lens” for glasses
+
+	INSERT INTO device(deviceCatalogId, deviceDescrip, availabilityStatus)
+	VALUES(002, "Optimal single vision lens, 2020 style, anti-scratch and anti-shock.", "In stock.");
+
+	INSERT INTO visualDevice(deviceCatalogId, lensSerialNb, lensVisionType, lensTint, lensThinnessLevel)
+	VALUES(002, "opto456321987.", "Single vision for short-sightedness.", "clear.", "ultra-thin.");
+
+
+Entering the values of “Phono Titanium Digital Hearing Aid” to support hearing
+
+	INSERT INTO device(deviceCatalogId, deviceDescrip, availabilityStatus)
+	VALUES(003, " Ultra-sensitive digital hearing aid, adjustable through an App.", "currently being ordered.");
+
+	INSERT INTO hearingDevice(deviceCatalogId, hdMake, hdModel)
+	VALUES(003, "Phono Titanium. ", "phono2021.");
+
+
+
+
